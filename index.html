@@ -1,0 +1,241 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Question System</title>
+    <link rel="stylesheet" href="styles.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
+</head>
+
+<body>
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+
+
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'Questions')">Questions</button>
+    <button class="tablinks" onclick="openTab(event, 'Assignment')">Assignment</button>
+    <button class="tablinks" onclick="openTab(event, 'Tickets')">Tickets</button>
+</div>
+
+<!-- Tab content -->
+<div id="Questions" class="tabcontent">
+    <div class="tabContentContainer">
+        <ul class="messageAndLogoutList">
+            <li>
+                <img class ="smallImg" src="assets/messageIcon.png" onclick="openTab(event, 'Tickets')">
+            </li>
+            <li>
+                <img class ="smallImg" src="assets/logoutIcon.png">
+            </li>
+        </ul>
+        <div class = "actualContent">
+            <div class = "col-md-4">
+                Lecture:
+                <select id="lectureDropDown" onchange=lectureSelected(this)>
+                    <option value="mat">--select--</option>
+                    <option value="mat">Math</option>
+                    <option value="phy">Physics</option>
+                    <option value="bio">Biology</option>
+                </select>
+            </div>
+            <div class = "col-md-4">
+                Subject:
+                <select id="subjectDropDown">
+                </select>
+            </div>
+            <div class = "col-md-4">
+                <button onclick = "filter()" type="button" class="btn btn-light">Filter</button>
+            </div>
+
+            <table id="questionTable" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                <tr>
+                    <th>Question Code</th>
+                    <th>Is Matched?</th>
+                    <th>Is Assigned?</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ABC123</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+
+                </tbody>
+            </table>
+            </div>
+        <button onclick="JavaScript:newPopup('assignPopup.html');" type="button" class="btn btn-light" style="margin-left:94%">Assign</button>
+    </div>
+
+</div>
+
+<div id="Assignment" class="tabcontent">
+    <div class="tabContentContainer">
+        <ul class="messageAndLogoutList">
+            <li>
+                <img class ="smallImg" src="assets/messageIcon.png" onclick="openTab(event, 'Tickets')">
+            </li>
+            <li>
+                <img class ="smallImg" src="assets/logoutIcon.png">
+            </li>
+        </ul>
+        <table id="assignmentTable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Question Count</th>
+                <th>Matched Count</th>
+                <th>Deadline</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <button onclick="endAssignment()" type="button" class="btn btn-light" style="margin-left:94%">End Assignment</button>
+    </div>
+
+</div>
+
+<div id="Tickets" class="tabcontent">
+    <div class="tabContentContainer">
+        <ul class="messageAndLogoutList">
+            <li>
+                <img class ="smallImg" src="assets/logoutIcon.png">
+            </li>
+        </ul>
+        <table id="ticketTable" class="table table-striped table-bordered" style="width:100%">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Is Answered?</th>
+                <th>Subject</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+            <tr>
+                <td>ABC123</td>
+                <td>Yes</td>
+                <td>No</td>
+                <td>No</td>
+            </tr>
+
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-light" style="margin-left:94%">Close</button>
+    </div>
+</div>
+
+<div id='cntnr'>
+    <ul id='items'>
+        <li>Details</li>
+        <li>Match</li>
+    </ul>
+</div>
+<script src="main.js"></script>
+</body>
+</html>
