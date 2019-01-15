@@ -38,8 +38,24 @@ $(document).ready(function() {
 } );
 
 function newPopup(url) {
+
     popupWindow = window.open(
         url,'popUpWindow','height=600,width=500,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+
+}
+
+function chatPopup(url) {
+
+    popupWindow = window.open(
+        url,'popUpWindow','height=1050,width=820,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+
+}
+
+function matchPopup(url) {
+
+    popupWindow = window.open(
+        url,'popUpWindow','height=300,width=860,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=no,menubar=no,location=no,directories=no,status=yes')
+
 }
 
 $(document).bind("contextmenu",function(e){
@@ -68,7 +84,7 @@ function startFocusOut(){
 $("#items > li").click(function(){
     if($(this).text() == 'Match')
     {
-        newPopup("match.html");
+        matchPopup("match.html");
     }
     else if($(this).text() == 'Details')
     {
@@ -136,27 +152,25 @@ function filter()
     if(selectValue==='Math')
     {
         table.empty();
-        table.append(" <tr><td>MATH123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>MATH123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>MATH123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>MATH123</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>MATH149</td><td>No</td><td>Yes</td></tr>");
+        table.append(" <tr><td>MATH114</td><td>No</td><td>No</td></tr>");
+        table.append(" <tr><td>MATH169</td><td>Yes</td><td>Yes</td></tr>");
     }
     else if(selectValue==='Biology')
     {
         table.empty();
-        table.append(" <tr><td>BIO123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>BIO123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>BIO123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>BIO123</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>BIO114</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>BIO649</td><td>Yes</td><td>No</td></tr>");
     }
     else if(selectValue==='Physics')
     {
         table.empty();
-        table.append(" <tr><td>PHY123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>PHY123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>PHY123</td><td>Yes</td><td>No</td></tr>");
-        table.append(" <tr><td>PHY123</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>PHY109</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>PHY688</td><td>Yes</td><td>No</td></tr>");
+        table.append(" <tr><td>PHY751</td><td>Yes</td><td>No</td></tr>");
     }
 
 }
+
+
 

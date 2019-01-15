@@ -1,22 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>QSTCNCODE1456</title>
+    <meta charset="utf-8">
+    <title>Question System</title>
+    <link rel="stylesheet" href="styles_match.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.bootstrap.min.css">
 </head>
 
-<body>
-    <div class = "col-md-5">
-        <p><h3>Solved: 568</h3></p>
+<div class="row pick-list">
+    <div class="col-xs-4">
+        <ul class="list-group source">
+            <li class="list-group-item">SO456: Critical thinking</li>
+            <li class="list-group-item">SO936: Creativity</li>
+            <li class="list-group-item">SO773: Problem solving</li>
+            <li class="list-group-item">SO998: Analytical thinking</li>
+            <li class="list-group-item">SO123: Decision making</li>
+        </ul>
     </div>
-    <div class = "col-md-2">
-        <p><h3>Solved: 568</h3></p>
+    <div class="col-xs-2 v-center">
+        <button title="Send to list 2" class="btn btn-default center-block add" disabled="disabled"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button title="Send to list 1" class="btn btn-default center-block remove" disabled="disabled"><i class="glyphicon glyphicon-chevron-left"></i></button>
     </div>
-    <div class = "col-md-5">
-        <p><h3>Solved: 568</h3></p>
+    <div class="col-xs-4">
+        <ul class="list-group destination">
+
+        </ul>
     </div>
-</body>
+    <button onclick= 'window.close();' type="button" class="btn btn-light" style="margin-left:77%">Done</button>
+</div>
+
+<script>
+    $('.list-group-item').click(function(){
+        // add active class at list-item by click
+        $(this).parent().find('.list-group-item').removeClass('active');
+        $(this).addClass('active');
+
+        // make add(>) button disabled untill selecting one
+        var source = $(this).parents('.pick-list').find('.source').children('.active');
+        if(source.length > 0) {
+            $(this).attr('disabled',false);
+            $('.add').attr('disabled',false);
+        } else {
+            $(this).attr('disabled',true);
+            $('.add').attr('disabled',true);
+        };
+
+        // make remove(<) button disabled untill selecting one
+        var des = $(this).parents('.pick-list').find('.destination').children('.active');
+        if(des.length > 0) {
+            $(this).attr('disabled',false);
+            $('.remove').attr('disabled',false);
+        } else {
+            $(this).attr('disabled',true);
+            $('.remove').attr('disabled',true);
+        };
+    });
+
+    $('.add').click(function(){
+        var item = $(this).parents('.pick-list').find('.source').children('.active');
+        // Move item from source to destination when one item is active/selected
+        if(item.length > 0) {
+            $('.source .list-group-item.active').appendTo('.list-group.destination');
+            $('.add').attr('disabled',true);
+            $('.destination .list-group-item.active').removeClass('active');
+        }
+    });
+
+    $('.remove').click(function(){
+        var item = $(this).parents('.pick-list').find('.destination').children('.active');
+        // Move item from destination to source when one item is active/selected
+        if(item.length > 0) {
+            $('.destination .list-group-item.active').appendTo('.source');
+            $('.remove').attr('disabled',true);
+            $('.source .list-group-item.active').removeClass('active');
+        }
+    });
+    </script>
+
 </html>

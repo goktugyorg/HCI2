@@ -68,40 +68,71 @@
                 </thead>
                 <tbody>
                 <tr>
-                    <td>ABC123</td>
+                    <td>MATH149</td>
+                    <td>No</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>MATH114</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>MATH169</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>ABC123</td>
+                    <td>BIO114</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>ABC123</td>
+                    <td>BIO649</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>ABC123</td>
+                    <td>PHY109</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>ABC123</td>
+                    <td>PHY688</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
                 <tr>
-                    <td>ABC123</td>
+                    <td>PHY751</td>
                     <td>Yes</td>
                     <td>No</td>
                 </tr>
-
                 </tbody>
             </table>
             </div>
+
+
+        <form>
+            <div class="multiselect">
+                <div class="selectBox" onclick="showCheckboxes()">
+                    <select>
+                        <option>Select an option</option>
+                    </select>
+                    <div class="overSelect"></div>
+                </div>
+                <div id="checkboxes">
+                    <label for="one">
+                        <input type="checkbox" id="one" />First checkbox</label>
+                    <label for="two">
+                        <input type="checkbox" id="two" />Second checkbox</label>
+                    <label for="three">
+                        <input type="checkbox" id="three" />Third checkbox</label>
+                </div>
+            </div>
+        </form>
+
         <button onclick="JavaScript:newPopup('assignPopup.html');" type="button" class="btn btn-light" style="margin-left:94%">Assign</button>
+
     </div>
 
 </div>
@@ -226,7 +257,7 @@
 
             </tbody>
         </table>
-        <button type="button" class="btn btn-light" style="margin-left:94%">Close</button>
+        <button onclick="chatPopup('chat.html')" type="button" class="btn btn-light" style="margin-left:94%">Close</button>
     </div>
 </div>
 
@@ -236,6 +267,9 @@
         <li>Match</li>
     </ul>
 </div>
+
+
+
 <script src="main.js"></script>
 </body>
 </html>
